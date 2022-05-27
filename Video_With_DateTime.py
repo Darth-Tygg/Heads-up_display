@@ -5,6 +5,7 @@
 # %B  Locale's full month name.
 # %d  Day of the month as a decimal number
 # %Y  Year with century as a decimal number.
+# BGR Color numbers can be found using https://rgbcolorcode.com/
 
 import os
 import cv2
@@ -45,10 +46,10 @@ while cam.isOpened():
     # the location on screen, font, scale, color, thickness, and line type.
     frame = cv2.putText(frame, cron.strftime('%I:%M:%S on %A, %B the %dth, %Y'), (10, 40), font, 1,
                         (255, 150, 0), 2, cv2.LINE_AA)
+    text = cv2.putText(frame, get_audio(), (10, 440), font, 1, (255, 150, 0), 2, cv2.LINE_AA)
 
     # show image
     cv2.imshow('Webcam', frame)
-    get_audio()
 
     # This checks whether q has been hit and stops the loop
     if cv2.waitKey(1) & 0xFF == ord('q'):
